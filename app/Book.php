@@ -5,11 +5,11 @@ namespace Library;
 use DB;
 use Illuminate\Database\Eloquent\Model;
 
-class Books extends Model
+class Book extends Model
 {
     public function authors()
     {
-        return $this->belongsTo(Authors::class);
+        return $this->belongsTo(Author::class);
     }
 
     /**

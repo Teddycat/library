@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 use DB;
 use League\Flysystem\Exception;
-use Library\Authors;
-use Library\Books;
+use Library\Author;
+use Library\Book;
 use Library\Http\Requests;
 use Library\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redirect;
@@ -20,7 +20,7 @@ class AuthorsController extends Controller
      */
     public function index()
     {
-        $author = new Authors();
+        $author = new Author();
         return view('library', ['authors' => $author->getAllAuthors()]);
     }
 
@@ -31,7 +31,7 @@ class AuthorsController extends Controller
      */
     public function store(Request $request)
     {
-        $author = new Authors();
+        $author = new Author();
         try {
             var_dump($author->addAuthor($request->input('author')));
             return Redirect::back();
@@ -47,8 +47,8 @@ class AuthorsController extends Controller
      */
     public function deleteAuthor(Request $request)
     {
-        $author = new Authors();
-        $books = new Books();
+        $author = new Author();
+        $books = new Book();
         try {
             $author->deleteAuthor($request->input('deleteSubject'));
             $books->deleteBooksByAuthor($request->input('deleteSubject'));

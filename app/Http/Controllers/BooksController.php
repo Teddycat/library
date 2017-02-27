@@ -4,8 +4,8 @@ namespace Library\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Library\Books;
-use Library\Authors;
+use Library\Book;
+use Library\Author;
 use Library\Http\Requests;
 use Library\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redirect;
@@ -14,8 +14,8 @@ class BooksController extends Controller
 {
     public function index($id)
     {
-        $books = new Books();
-        $author = new Authors();
+        $books = new Book();
+        $author = new Author();
         return view('books', ['books' => $books->getBooksByAuthor($id), 'author' => $author->getAuthor($id), 'authorId' => $id]);
     }
 
@@ -26,7 +26,7 @@ class BooksController extends Controller
      */
     public function toJson($id)
     {
-        $books = new Books();
+        $books = new Book();
         $listBooks = json_encode($books->getBooksByAuthor($id), JSON_FORCE_OBJECT);
         return view('jsonBooks', ['books' => $listBooks]);
     }
@@ -38,7 +38,7 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {
-        $books = new Books();
+        $books = new Book();
         $books->addBook($request->input());
         return Redirect::back();
     }
@@ -50,7 +50,7 @@ class BooksController extends Controller
      */
     public function deleteBook(Request $request)
     {
-        $books = new Books();
+        $books = new Book();
         try {
             $books->deleteBook($request->input('deleteSubject'));
             $afterDelete = ['result' => true];

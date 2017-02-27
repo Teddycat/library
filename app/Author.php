@@ -5,12 +5,12 @@ namespace Library;
 use DB;
 use Illuminate\Database\Eloquent\Model;
 
-class Authors extends Model
+class Author extends Model
 {
 
     public function books()
     {
-        return $this->hasMany(Books::class);
+        return $this->hasMany(Book::class);
     }
 
     /**
