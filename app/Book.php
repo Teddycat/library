@@ -48,13 +48,4 @@ class Book extends Model
         return DB::table('books')->where(['books_id' => $id])->delete();
     }
 
-    /**
-     * Delete all books of selected author
-     * @param $id
-     * @return mixed
-     */
-    public function deleteBooksByAuthor($id)
-    {
-        return DB::table('books')->where(['author_id' => $id])->delete();
-    }
 }

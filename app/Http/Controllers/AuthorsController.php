@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use DB;
 use League\Flysystem\Exception;
 use Library\Author;
-use Library\Book;
 use Library\Http\Requests;
 use Library\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redirect;
@@ -48,10 +47,8 @@ class AuthorsController extends Controller
     public function deleteAuthor(Request $request)
     {
         $author = new Author();
-        $books = new Book();
         try {
             $author->deleteAuthor($request->input('deleteSubject'));
-            $books->deleteBooksByAuthor($request->input('deleteSubject'));
             $afterDelete = ['result' => true];
         } catch (Exception $e) {
             $afterDelete = ['result' => false];
