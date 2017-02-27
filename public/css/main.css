@@ -1,0 +1,30 @@
+body {
+    font-family: 'Lato';
+    background-image: url('http://blogs.library.duke.edu/wp-content/uploads/2014/09/Books.jpg');
+}
+.fa-btn {
+    margin-right: 6px;
+}
+
+.form-area {
+    padding: 5%;
+}
+
+.link-return{
+    float: right;
+}
+
+.input-author, .input-book {
+    width: 40%;
+}
+
+.submit-author, .submit-book {
+    margin: 0 auto;
+    width: 40%;
+    background-color: black;
+    color: darkgreen;
+}
+
+#add-author, #add-book{
+    display: none;
+}
