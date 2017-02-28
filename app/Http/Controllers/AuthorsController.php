@@ -32,7 +32,7 @@ class AuthorsController extends Controller
     {
         $author = new Author();
         try {
-            var_dump($author->addAuthor($request->input('author')));
+            $author->addAuthor($request->input('author'));
             return Redirect::back();
         } catch (Exception $e) {
             echo 'Sorry, something going wrong';
